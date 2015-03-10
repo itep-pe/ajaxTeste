@@ -47,11 +47,7 @@
                             if (data.success) {
                                 //alert("1");
                                 $("#ajaxResponse").html("");
-                                //$("#ajaxResponse").append("<b>Country Code:</b> 1");
-                                //$("#pessoa").append("<b> Nome:</b> " + data.testInfo.firstname + " " + data.testInfo.lastname + "<br>");
-
-                                $("#pessoa").slideUp( 1000 ).fadeIn( 200 ).append("<ul>" + data.testInfo.firstname + " " + data.testInfo.lastname + "</ul>");
-
+                                $("#pessoa").slideUp(1000).fadeIn(200).append("<ul>" + data.testInfo.firstname + " " + data.testInfo.lastname + "</ul>");
                             }
                             //display error message
                             else {
@@ -67,7 +63,7 @@
                         },
                         //capture the request before it was sent to server
                         beforeSend: function (jqXHR, settings) {
-                            $("#loader").show().delay(10).fadeIn(  ).slideUp( 600 );
+                            $("#loader").show().delay(10).fadeIn(  ).slideUp(600);
                             //adding some Dummy data to the request
                             settings.data += "&dummyData=whatever";
                             //disable the button until we get the response
@@ -81,7 +77,6 @@
                         }
                     });
                 });
-
             });
         </script>
 

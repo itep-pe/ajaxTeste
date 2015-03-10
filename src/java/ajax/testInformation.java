@@ -78,10 +78,9 @@ public class testInformation extends HttpServlet {
         JsonObject myObj = new JsonObject();
         Person testInfo = getInfo(personCode);
 
-        System.out.print("test");
-        System.out.print(personCode);
-        System.out.print("test");
-
+//        System.out.print("test");
+//        System.out.print(personCode);
+//        System.out.print("test");
         Gson gson = new Gson();
         JsonElement je = gson.toJsonTree(testInfo);
         JsonObject jo = new JsonObject();
@@ -95,12 +94,11 @@ public class testInformation extends HttpServlet {
         }
 
         myObj.add("testInfo", testObj);
-        System.out.println("\n myObj to string: \n");
+//        System.out.println("\n myObj to string: \n");
         out.println(myObj.toString());
 
-        System.out.println("\n myObj to string: \n");
-        System.out.print(myObj.toString());
-
+//        System.out.println("\n myObj to string: \n");
+//        System.out.print(myObj.toString());
         out.close();
     }
 
@@ -126,20 +124,21 @@ public class testInformation extends HttpServlet {
         Person guy1 = new Person("Alisson", "Tenorio", "013.404.374-06");
         Person guy2 = new Person("Adama", "Sene", "335.940.766-01");
 
-        System.out.println("\n");
-        System.out.println("personCode - Codigo da pessoa getInfo: ");
-        System.out.println(personCode);
-        System.out.println("\n");
-
+//        System.out.println("\n");
+//        System.out.println("personCode - Nome da pessoa getInfo: ");
+//        System.out.println(personCode);
+//        System.out.println("\n");
         List<Person> listPerson = new ArrayList<Person>();
 
         listPerson.add(guy1);
         listPerson.add(guy2);
 
+        String person = personCode.toUpperCase();
+
         try {
             for (int i = 0; i < listPerson.size(); i++) {
-                if (listPerson.get(i).getName().equals(personCode) || listPerson.get(i).getName().toLowerCase().equals(personCode) || listPerson.get(i).getName().toUpperCase().equals(personCode)) {
-                    return listPerson.get(i);
+                if (listPerson.get(i).getName().toUpperCase().equals(person)) {
+                    someGuy = listPerson.get(i);
                 }
             }
 
@@ -170,11 +169,11 @@ public class testInformation extends HttpServlet {
             System.out.println("\nException getInfo: \n");
             System.out.println(e);
         }
-        if (someGuy.getName() != null) {
-            System.out.println("\n someGuy.getName(): \n");
-            System.out.println(someGuy.getName());
-
-        }
+//        if (someGuy.getName() != null) {
+//            System.out.println("\n someGuy.getName(): \n");
+//            System.out.println(someGuy.getName());
+//
+//        }
         return someGuy;
     }
 }
