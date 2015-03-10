@@ -42,7 +42,7 @@
                         dataType: "json",
                         //if received a response from the server
                         success: function (data, textStatus, jqXHR) {
-                            $("loader").hide();
+                            $("#loader").hide();
                             //our test code was correct so we have some information to display
                             if (data.success) {
                                 //alert("1");
@@ -50,20 +50,8 @@
                                 //$("#ajaxResponse").append("<b>Country Code:</b> 1");
                                 //$("#pessoa").append("<b> Nome:</b> " + data.testInfo.firstname + " " + data.testInfo.lastname + "<br>");
 
-                                $("#pessoa").append("<ul>" + data.testInfo.firstname + " " + data.testInfo.lastname + "</ul>");
-                                //$("#ajaxResponse").append("<b>Country Code:</b> 2");
-                                /*$("#ajaxResponse").append("<b>Country Code:</b> " + data.countryInfo.code + "
-                                 ");
-                                 $("#ajaxResponse").append("<b>Country Name:</b> " + data.countryInfo.name + "
-                                 ");
-                                 $("#ajaxResponse").append("<b>Continent:</b> " + data.countryInfo.continent + "
-                                 ");
-                                 $("#ajaxResponse").append("<b>Region:</b> " + data.countryInfo.region + "
-                                 ");
-                                 $("#ajaxResponse").append("<b>Life Expectancy:</b> " + data.countryInfo.lifeExpectancy + "
-                                 ");
-                                 $("#ajaxResponse").append("<b>GNP:</b> " + data.countryInfo.gnp + "
-                                 ");*/
+                                $("#pessoa").slideUp( 1000 ).fadeIn( 200 ).append("<ul>" + data.testInfo.firstname + " " + data.testInfo.lastname + "</ul>");
+
                             }
                             //display error message
                             else {
@@ -79,7 +67,7 @@
                         },
                         //capture the request before it was sent to server
                         beforeSend: function (jqXHR, settings) {
-                            $("loader").show();
+                            $("#loader").show().delay(10).fadeIn(  ).slideUp( 600 );
                             //adding some Dummy data to the request
                             settings.data += "&dummyData=whatever";
                             //disable the button until we get the response
@@ -91,26 +79,20 @@
                             //enable the button 
                             $('#myButton').attr("disabled", false);
                         }
-
                     });
                 });
 
             });
-
         </script>
 
         <form id="myAjaxRequestForm" >
             <fieldset>
-                <legend>Formulário de Cadastro</legend>
-
+                <legend>Colaborador Participante</legend>
                 <p>
-                    <label for="personCode">Nome da Pessoa:</label>
-
-                    <input id="personCode" type="text" name="personCode" />
-                    <!--                    <img src="./img/add.jpg" alt="Add" style="vertical-align: middle;"
-                                             onclick="selectIngredient($(this).prev().get(0));" />-->
+                    <label for="personCode">Nome:</label>
+                    <input id="personCode" type="text" name="personCode" />                  
                 </p>
-                <span id="loader" style="display:none" src="/img/loader.git">carregando...</span>
+                <span id="loader" style="display:none">carregando...<img src="./img/load.GIF" alt="Add"/></span>
                 <p>
                     <input id="myButton" type="button" value="Adicionar" />
                 </p>
@@ -118,12 +100,10 @@
         </form>
         <div id="anotherSection">
             <fieldset>
-                <legend>Reposta de requisição Ajax</legend>
+                <legend>Colaboradores Adicionados</legend>
                 <div id="ajaxResponse"></div>
                 <div id="pessoa" ></div>
-
             </fieldset>
-        </div>   
-
+        </div>
     </body>
 </html>
