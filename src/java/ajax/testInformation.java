@@ -64,7 +64,6 @@ public class testInformation extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String personCode = request.getParameter("personCode");
-        PrintWriter out = response.getWriter();
 
         response.setContentType("text/html");
         response.setHeader("Cache-control", "no-cache, no-store");
@@ -75,18 +74,11 @@ public class testInformation extends HttpServlet {
         response.setHeader("Access-Control-Allow-Headers", "Content-Type");
         response.setHeader("Access-Control-Max-Age", "86400");
 
-        JsonObject myObj = new JsonObject();
         Person testInfo = getInfo(personCode);
-
-//        System.out.print("test");
-//        System.out.print(personCode);
-//        System.out.print("test");
+        JsonObject myObj = new JsonObject();
         Gson gson = new Gson();
-        JsonElement je = gson.toJsonTree(testInfo);
-        JsonObject jo = new JsonObject();
-        jo.add("PersonRoot", je);
-
         JsonElement testObj = gson.toJsonTree(testInfo);
+
         if (testInfo.getName() == null) {
             myObj.addProperty("success", false);
         } else {
@@ -94,86 +86,30 @@ public class testInformation extends HttpServlet {
         }
 
         myObj.add("testInfo", testObj);
-//        System.out.println("\n myObj to string: \n");
+        PrintWriter out = response.getWriter();
         out.println(myObj.toString());
-
-//        System.out.println("\n myObj to string: \n");
-//        System.out.print(myObj.toString());
         out.close();
     }
 
-//    private boolean checkIfCPFexistInDB(String personCode) {
-//        boolean test = false;
-//
-//        try {
-//            if (personCode.equals("013.404.374-06")) {
-//                test = true;
-//            } else if (personCode.equals("054.534.494-89")) {
-//                test = true;
-//            } else {
-//                test = false;
-//            }
-//        } catch (Exception e) {
-//            System.out.println("\nException testInformation: \n");
-//            System.out.println(e);
-//        }
-//        return test;
-//    }
     private Person getInfo(String personCode) {
         Person someGuy = new Person();
         Person guy1 = new Person("Alisson", "Tenorio", "013.404.374-06");
         Person guy2 = new Person("Adama", "Sene", "335.940.766-01");
 
-//        System.out.println("\n");
-//        System.out.println("personCode - Nome da pessoa getInfo: ");
-//        System.out.println(personCode);
-//        System.out.println("\n");
         List<Person> listPerson = new ArrayList<Person>();
-
         listPerson.add(guy1);
         listPerson.add(guy2);
 
-        String person = personCode.toUpperCase();
-
         try {
             for (int i = 0; i < listPerson.size(); i++) {
-                if (listPerson.get(i).getName().toUpperCase().equals(person)) {
+                if (listPerson.get(i).getName().toUpperCase().equals(personCode.toUpperCase())) {
                     someGuy = listPerson.get(i);
                 }
             }
-
-//            if (personCode.equals("Alisson") || personCode.equals("alisson"))
-//             {
-//             someGuy.setFirstName("Alisson");
-//             someGuy.setLastName("Tenorio");
-//             someGuy.setCPF("013.404.374-06");
-//             } else if(personCode.equals("Adama") || personCode.equals("adama")) {
-//             someGuy.setFirstName("Adama");             
-//             someGuy.setLastName("Sene");
-//             someGuy.setCPF("335.940.766-01");
-//             } else {
-//             //Do Nothing
-//             }
-//            if (personCode.equals("013.404.374-06")) {
-//                someGuy.setFirstName("Alisson");
-//                someGuy.setLastName("Tenorio");
-//                someGuy.setCPF("013.404.374-06");
-//            } else if (personCode.equals("335.940.766-01")) {
-//                someGuy.setFirstName("Adama");
-//                someGuy.setLastName("Sene");
-//                someGuy.setCPF("335.940.766-01");
-//            } else {
-//                //Do Nothing
-//            }
         } catch (Exception e) {
             System.out.println("\nException getInfo: \n");
             System.out.println(e);
         }
-//        if (someGuy.getName() != null) {
-//            System.out.println("\n someGuy.getName(): \n");
-//            System.out.println(someGuy.getName());
-//
-//        }
         return someGuy;
     }
 }
