@@ -2,98 +2,43 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
     <servlet>
         <servlet-name>Login</servlet-name>
-        <servlet-class>com.itep.cabure.controler.Login</servlet-class>
+        <servlet-class>com.itep.br.controle.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Administracao</servlet-name>
+        <servlet-class>com.itep.br.controle.Administracao</servlet-class>
     </servlet>
     
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login.do</url-pattern>
     </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>Cadastro</servlet-name>
-        <servlet-class>com.itep.cabure.controler.Cadastro</servlet-class>
-    </servlet>
-    
-    
-    <servlet>
+	
+	<servlet>
         <description>Get Information about Country - jQuery Ajax Request</description>
-        <display-name>testInformation</display-name>
-        <servlet-name>testInformation</servlet-name>
-        <servlet-class>ajax.testInformation</servlet-class>
+        <display-name>AjaxTeste</display-name>
+        <servlet-name>TestInformation</servlet-name>
+        <servlet-class>ajax.TestInformation</servlet-class>
     </servlet>
     
     <servlet-mapping>
-        <servlet-name>testInformation</servlet-name>
+        <servlet-name>TestInformation</servlet-name>
         <url-pattern>/testInformation</url-pattern>
     </servlet-mapping>
     
-    
-    <servlet-mapping>
-        <servlet-name>Cadastro</servlet-name>
-        <url-pattern>/Cadastro.do</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>AutenticarConta</servlet-name>
-        <servlet-class>com.itep.cabure.controler.AutenticarConta</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>AutenticarConta</servlet-name>
-        <url-pattern>/AutenticarConta.do</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>Administracao</servlet-name>
-        <servlet-class>com.itep.cabure.controler.Administracao</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>Administracao</servlet-name>
-        <url-pattern>/Administracao.do</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>RecuperarSenha</servlet-name>
-        <servlet-class>com.itep.cabure.controler.RecuperarSenha</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>RecuperarSenha</servlet-name>
-        <url-pattern>/RecuperarSenha.do</url-pattern>
-    </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>Rotina3279</servlet-name>
-        <servlet-class>com.itep.cabure.controler.Rotina3279</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>Rotina3279</servlet-name>
-        <url-pattern>/Rotina3279.do</url-pattern>
-    </servlet-mapping>
-   
-    <servlet>
-        <servlet-name>siliaweb</servlet-name>
-        <servlet-class>com.itep.cabure.controler.siliaweb</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>siliaweb</servlet-name>
-        <url-pattern>/siliaweb.do</url-pattern>
-    </servlet-mapping>
-
     <error-page>
         <error-code>404</error-code>
-        <location>/erro.html</location>
+        <location>/erro/erro.jsp</location>
     </error-page>
-    
     <!--
     <error-page>
         <error-code>500</error-code>
         <location>/erro/erro.jsp</location>
-    </error-page> Comentario --> 
+    </error-page> Comentario -->
+    <servlet-mapping>
+        <servlet-name>Administracao</servlet-name>
+        <url-pattern>/Administracao.do</url-pattern>
+    </servlet-mapping>
     
     <session-config>
         <session-timeout>
@@ -105,4 +50,5 @@
         <welcome-file>index.html</welcome-file>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    
 </web-app>
