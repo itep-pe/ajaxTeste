@@ -46,7 +46,7 @@
                             if (data.success) {
                                 //alert("1");
                                 $("#ajaxResponse").html("");
-                                $("ul").slideUp(1000).fadeIn(200).append("<li>" + data.testInfo.firstname + " " + data.testInfo.lastname + "</li>");
+                                $("ul").slideUp(1000).fadeIn(200).append("<li>" + data.testInfo.firstname + " " + data.testInfo.lastname + "</li>").attr(onclick=);
                             }
                             //display error message
                             else {
@@ -78,20 +78,7 @@
                     });
                 });
             });
-        </script>
-
-        <!--        <script>
-                    $("a.calcula-quantidade").click(function (e) {
-                        e.preventDefault();
-                        var conta = $("li").length;
-                        alert(conta);
-                    });
-                    
-                    var cont = $("ul li").length;
-                                    if(cont > 5){
-                                        $("#loader").hide();
-                                    }
-                </script>-->
+        </script>        
 
         <form id="myAjaxRequestForm" >
             <fieldset>
@@ -115,5 +102,18 @@
                 <!--                <a href="#" classe="calcula-quantidade"> Calcular quantidade<a/>-->
             </fieldset>
         </div>
+        
+        <!--        <script>
+                    $("a.calcula-quantidade").click(function (e) {
+                        e.preventDefault();
+                        var conta = $("li").length;
+                        alert(conta);
+                    });
+                    
+                    var cont = $("ul li").length;
+                                    if(cont > 5){
+                                        $("#loader").hide();
+                                    }
+                </script>-->
     </body>
 </html>
