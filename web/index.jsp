@@ -13,6 +13,7 @@
 
     </head>
     <body>
+
         <script>
             $(document).ready(function () {
 
@@ -42,18 +43,21 @@
                         //if received a response from the server
                         success: function (data, textStatus, jqXHR) {
                             $("#loader").hide();
-                            //our test code was correct so we have some information to display                            
+                            //our test code was correct so we have some information to display
                             if (data.success) {
                                 //alert("1");
                                 $("#ajaxResponse").html("");
-                                $("ul").slideUp(1000).fadeIn(200).append("<li>" + data.testInfo.firstname + " " + data.testInfo.lastname + "</li>").attr(onclick=);
+                                //$("#ajaxResponse").append("<b>Country Code:</b> 1");
+                                //$("#pessoa").append("<b> Nome:</b> " + data.testInfo.firstname + " " + data.testInfo.lastname + "<br>");
+
+                                $("#pessoa").slideUp( 1000 ).fadeIn( 200 ).append("<li>" + data.testInfo.firstname + " " + data.testInfo.lastname + "</li>");
+
                             }
                             //display error message
                             else {
                                 //alert("2");
-                                $("#ajaxResponse").html("<div><b><br>Nome inválido!</b></div>");
+                                $("#ajaxResponse").html("<div><b>Nome inválido!</b></div>");
                             }
-
                         },
                         //If there was no resonse from the server
                         error: function (jqXHR, textStatus, errorThrown) {
@@ -63,7 +67,7 @@
                         },
                         //capture the request before it was sent to server
                         beforeSend: function (jqXHR, settings) {
-                            $("#loader").show().delay(10).fadeIn(  ).slideUp(600);
+                            $("#loader").show().delay(10).fadeIn(  ).slideUp( 600 );
                             //adding some Dummy data to the request
                             settings.data += "&dummyData=whatever";
                             //disable the button until we get the response
@@ -77,18 +81,18 @@
                         }
                     });
                 });
+
             });
-        </script>        
+        </script>
 
         <form id="myAjaxRequestForm" >
             <fieldset>
                 <legend>Colaborador Participante</legend>
                 <p>
                     <label for="personCode">Nome:</label>
-                    <input id="personCode" type="text" name="personCode" />                   
+                    <input id="personCode" type="text" name="personCode" />                  
                 </p>
                 <span id="loader" style="display:none">carregando...<img src="./img/load.GIF" alt="Add"/></span>
-                <div id="ajaxResponse"></div>
                 <p>
                     <input id="myButton" type="button" value="Adicionar" />
                 </p>
@@ -97,23 +101,9 @@
         <div id="anotherSection">
             <fieldset>
                 <legend>Colaboradores Adicionados</legend>
-                
-                <ul></ul>
-                <!--                <a href="#" classe="calcula-quantidade"> Calcular quantidade<a/>-->
+                <div ><ul id="ajaxResponse"></ul></div>
+                <div id="pessoa" ></div>
             </fieldset>
         </div>
-        
-        <!--        <script>
-                    $("a.calcula-quantidade").click(function (e) {
-                        e.preventDefault();
-                        var conta = $("li").length;
-                        alert(conta);
-                    });
-                    
-                    var cont = $("ul li").length;
-                                    if(cont > 5){
-                                        $("#loader").hide();
-                                    }
-                </script>-->
     </body>
 </html>
