@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-    <servlet>
-        <servlet-name>Login</servlet-name>
-        <servlet-class>com.itep.br.controle.Login</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>Administracao</servlet-name>
-        <servlet-class>com.itep.br.controle.Administracao</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/Login.do</url-pattern>
-    </servlet-mapping>
 	
-	<servlet>
-        <description>Get Information about Country - jQuery Ajax Request</description>
-        <display-name>AjaxTeste</display-name>
-        <servlet-name>TestInformation</servlet-name>
-        <servlet-class>ajax.TestInformation</servlet-class>
+    <servlet>
+        <servlet-name>AdicionarColaboradorController</servlet-name>
+        <servlet-class>ajax.AdicionarColaboradorController</servlet-class>
     </servlet>
-    
     <servlet-mapping>
-        <servlet-name>TestInformation</servlet-name>
-        <url-pattern>/testInformation</url-pattern>
+        <servlet-name>AdicionarColaboradorController</servlet-name>
+        <url-pattern>/adicionarColaboradorController</url-pattern>
     </servlet-mapping>
     
     <error-page>
@@ -35,10 +19,6 @@
         <error-code>500</error-code>
         <location>/erro/erro.jsp</location>
     </error-page> Comentario -->
-    <servlet-mapping>
-        <servlet-name>Administracao</servlet-name>
-        <url-pattern>/Administracao.do</url-pattern>
-    </servlet-mapping>
     
     <session-config>
         <session-timeout>

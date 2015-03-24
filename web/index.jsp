@@ -31,13 +31,11 @@
                     //get the form data using another method 
                     var personCode = $("input#personCode").val();
                     dataString = "personCode=" + personCode;
-
-                    //alert(dataString);
                     //make the AJAX request, dataType is set to json
                     //meaning we are expecting JSON data in response from the server
                     $.ajax({
                         type: "POST",
-                        url: "testInformation",
+                        url: "adicionarColaboradorController",
                         data: dataString,
                         dataType: "json",
                         //if received a response from the server
@@ -45,29 +43,22 @@
                             $("#loader").hide();
                             //our test code was correct so we have some information to display
                             if (data.success) {
-                                //alert("1");
                                 $("#ajaxResponse").html("");
-                                //$("#ajaxResponse").append("<b>Country Code:</b> 1");
-                                //$("#pessoa").append("<b> Nome:</b> " + data.testInfo.firstname + " " + data.testInfo.lastname + "<br>");
-
-                                $("#pessoa").slideUp( 1000 ).fadeIn( 200 ).append("<li>" + data.testInfo.firstname + " " + data.testInfo.lastname + "</li>");
-
+                                $("#pessoa").slideUp(1000).fadeIn(200).append("<ul>" + data.testInfo.firstname + " " + data.testInfo.lastname + "</ul>");
                             }
                             //display error message
                             else {
-                                //alert("2");
                                 $("#ajaxResponse").html("<div><b>Nome inválido!</b></div>");
                             }
                         },
                         //If there was no resonse from the server
                         error: function (jqXHR, textStatus, errorThrown) {
-                            //alert("3");
                             console.log("Algo ruim aconteceu: " + textStatus);
                             $("#ajaxResponse").html(jqXHR.responseText);
                         },
                         //capture the request before it was sent to server
                         beforeSend: function (jqXHR, settings) {
-                            $("#loader").show().delay(10).fadeIn(  ).slideUp( 600 );
+                            $("#loader").show().delay(10).fadeIn(  ).slideUp(600);
                             //adding some Dummy data to the request
                             settings.data += "&dummyData=whatever";
                             //disable the button until we get the response
@@ -81,7 +72,6 @@
                         }
                     });
                 });
-
             });
         </script>
 
@@ -101,7 +91,7 @@
         <div id="anotherSection">
             <fieldset>
                 <legend>Colaboradores Adicionados</legend>
-                <div ><ul id="ajaxResponse"></ul></div>
+                <div id="ajaxResponse"></div>
                 <div id="pessoa" ></div>
             </fieldset>
         </div>
