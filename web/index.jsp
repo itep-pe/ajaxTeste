@@ -41,10 +41,11 @@
                         //if received a response from the server
                         success: function (data, textStatus, jqXHR) {
                             $("#loader").hide();
+
                             //our test code was correct so we have some information to display
                             if (data.success) {
                                 $("#ajaxResponse").html("");
-                                $("#pessoa").slideUp(1000).fadeIn(200).append("<ul>" + data.testInfo.firstname + " " + data.testInfo.lastname + "</ul>");
+                                $("#pessoa").slideUp(1000).fadeIn(200).append("<li TYPE='none' id='pessoa" + data.testInfo.id + "' value='" + data.testInfo.firstname + " " + data.testInfo.lastname + "'>" + data.testInfo.firstname + " " + data.testInfo.lastname + "</li>");
                             }
                             //display error message
                             else {
@@ -75,24 +76,28 @@
             });
         </script>
 
-        <form id="myAjaxRequestForm" >
-            <fieldset>
-                <legend>Colaborador Participante</legend>
-                <p>
-                    <label for="personCode">Nome:</label>
-                    <input id="personCode" type="text" name="personCode" />                  
-                </p>
-                <span id="loader" style="display:none">carregando...<img src="./img/load.GIF" alt="Add"/></span>
-                <p>
-                    <input id="myButton" type="button" value="Adicionar" />
-                </p>
-            </fieldset>
-        </form>
+        <div>
+            <form id="myAjaxRequestForm" >
+                <fieldset>
+                    <legend>Colaborador Participante</legend>
+                    <p>
+                        <label for="personCode">Nome:</label>
+                        <input id="personCode" type="text" name="personCode" />                  
+                    </p>
+                    <span id="loader" style="display:none">carregando...<img src="./img/load.GIF" alt="Add"/></span>
+                    <p>
+                        <input id="myButton" type="button" value="Adicionar" />
+                    </p>
+                </fieldset>
+            </form>
+        </div>
         <div id="anotherSection">
             <fieldset>
                 <legend>Colaboradores Adicionados</legend>
                 <div id="ajaxResponse"></div>
-                <div id="pessoa" ></div>
+                <div>
+                    <ul id="pessoa"></ul>
+                </div>
             </fieldset>
         </div>
     </body>

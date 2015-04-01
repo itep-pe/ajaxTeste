@@ -19,19 +19,27 @@ import javax.servlet.http.HttpServletResponse;
 
 public class AdicionarColaboradorController extends HttpServlet {
 
+    int contador = 0;
+
     public final class Person implements Serializable {
 
-        private String firstname = null;
-        private String lastname = null;
-        private String CPF = null;
+        private String id;
+        private String firstname;
+        private String lastname;
+        private String CPF;
 
         public Person() {
         }
 
-        public Person(String firstname, String lastname, String CPF) {
+        public Person(String id, String firstname, String lastname, String CPF) {
+            this.id = id;
             this.firstname = firstname;
             this.lastname = lastname;
             this.CPF = CPF;
+        }
+
+        public String getId() {
+            return this.id;
         }
 
         public String getCPF() {
@@ -40,6 +48,10 @@ public class AdicionarColaboradorController extends HttpServlet {
 
         public String getName() {
             return this.firstname;
+        }
+
+        public void setId(String ID_) {
+            this.id = ID_;
         }
 
         public void setFirstName(String firstname_) {
@@ -58,7 +70,8 @@ public class AdicionarColaboradorController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     public AdicionarColaboradorController() {
-        super();
+        if(contador > 0)
+            contador = 0;
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -87,8 +100,9 @@ public class AdicionarColaboradorController extends HttpServlet {
             myObj.addProperty("success", false);
         } else {
             myObj.addProperty("success", true);
+            contador++;
         }
-
+        System.out.println("Impressão depois de 'sucess': " + contador);
         myObj.add("testInfo", testObj);
         PrintWriter out = response.getWriter();
         out.println(myObj.toString());
@@ -97,13 +111,13 @@ public class AdicionarColaboradorController extends HttpServlet {
 
     private Person getInfo(String personCode) {
         Person someGuy = new Person();
-        Person guy1 = new Person("Alisson", "Tenorio", "013.404.374-06");
-        Person guy2 = new Person("Adama", "Sene", "335.940.766-01");
-        Person guy3 = new Person("Jefferson", "Lima", "105.410.304-69");
-        Person guy4 = new Person("Fernanda", "Franklin", "444.747.614-21");
-        Person guy5 = new Person("Daniel", "Cirne", "980.299.452-99");
-        Person guy6 = new Person("Jon", "Jones", "261.275.414-84");
-        Person guy7 = new Person("Macário", "Granja", "723.141.526-11");
+        Person guy1 = new Person("0", "Alisson", "Tenorio", "013.404.374-06");
+        Person guy2 = new Person("1", "Adama", "Sene", "335.940.766-01");
+        Person guy3 = new Person("2", "Jefferson", "Lima", "105.410.304-69");
+        Person guy4 = new Person("3", "Fernanda", "Franklin", "444.747.614-21");
+        Person guy5 = new Person("4", "Daniel", "Cirne", "980.299.452-99");
+        Person guy6 = new Person("5", "Jon", "Jones", "261.275.414-84");
+        Person guy7 = new Person("6", "Macário", "Granja", "723.141.526-11");
 
         List<Person> listPerson = new ArrayList<Person>();
         listPerson.add(guy1);
